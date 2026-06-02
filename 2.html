@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultimate Romantic Proposal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      overflow-x:hidden;
+      background:#000;
+      color:white;
+      min-height:100vh;
+      position:relative;
+    }
+
+    /* =====================================================
+       VIDEO BACKGROUND
+    ===================================================== */
+
+    .video-bg{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-10;
+      filter:brightness(.45) saturate(1.2);
+      animation:bgZoom 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgZoom{
+      from{
+        transform:scale(1);
+      }
+
+      to{
+        transform:scale(1.1);
+      }
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      z-index:-9;
+
+      background:
+      linear-gradient(
+        135deg,
+        rgba(255,0,128,.35),
+        rgba(0,0,0,.25),
+        rgba(255,105,180,.35)
+      );
+
+      backdrop-filter:blur(3px);
+    }
+
+    /* =====================================================
+       AURORA EFFECT
+    ===================================================== */
+
+    .aurora{
+      position:fixed;
+      inset:-20%;
+      z-index:-8;
+      opacity:.5;
+      mix-blend-mode:screen;
+      animation:auroraMove 20s infinite alternate ease-in-out;
+
+      background:
+      radial-gradient(circle at 20% 20%, rgba(255,105,180,.3), transparent 25%),
+      radial-gradient(circle at 80% 30%, rgba(255,20,147,.25), transparent 25%),
+      radial-gradient(circle at 50% 80%, rgba(255,182,193,.25), transparent 25%);
+    }
+
+    @keyframes auroraMove{
+      0%{
+        transform:translate(-5%,-5%) rotate(0deg);
+      }
+
+      50%{
+        transform:translate(5%,5%) rotate(4deg);
+      }
+
+      100%{
+        transform:translate(-5%,8%) rotate(-4deg);
+      }
+    }
+
+    /* =====================================================
+       PARTICLES
+    ===================================================== */
+
+    .particle{
+      position:fixed;
+      width:4px;
+      height:4px;
+      border-radius:50%;
+      background:white;
+      opacity:.8;
+      animation:particleFloat linear infinite;
+    }
+
+    @keyframes particleFloat{
+      from{
+        transform:translateY(100vh) scale(.5);
+        opacity:0;
+      }
+
+      20%{
+        opacity:1;
+      }
+
+      to{
+        transform:translateY(-120vh) scale(1.2);
+        opacity:0;
+      }
+    }
+
+    /* =====================================================
+       MAIN WRAPPER
+    ===================================================== */
+
+    .wrapper{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:80px 20px;
+      position:relative;
+      z-index:5;
+    }
+
+    /* =====================================================
+       CARD
+    ===================================================== */
+
+    .card{
+      width:min(900px,95vw);
+      position:relative;
+      overflow:hidden;
+
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.2);
+      backdrop-filter:blur(18px);
+
+      border-radius:35px;
+      padding:60px 40px;
+
+      box-shadow:
+      0 10px 40px rgba(255,20,147,.25),
+      0 0 120px rgba(255,105,180,.15);
+
+      animation:cardAppear 1.5s ease;
+    }
+
+    @keyframes cardAppear{
+      from{
+        opacity:0;
+        transform:translateY(50px) scale(.9);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:-200%;
+      left:-50%;
+      width:60%;
+      height:400%;
+
+      background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.3),
+        transparent
+      );
+
+      transform:rotate(25deg);
+
+      animation:shine 8s infinite;
+    }
+
+    @keyframes shine{
+      from{
+        left:-70%;
+      }
+
+      to{
+        left:160%;
+      }
+    }
+
+    /* =====================================================
+       TITLE SECTION
+    ===================================================== */
+
+    .mini-text{
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:13px;
+      opacity:.85;
+      margin-bottom:25px;
+      animation:floating 5s infinite ease-in-out;
+    }
+
+    @keyframes floating{
+      0%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-8px);
+      }
+
+      100%{
+        transform:translateY(0);
+      }
+    }
+
+    .heart{
+      font-size:120px;
+      margin-bottom:25px;
+      animation:heartbeat 1.2s infinite;
+      filter:drop-shadow(0 0 25px rgba(255,105,180,.7));
+    }
+
+    @keyframes heartbeat{
+      0%{
+        transform:scale(1);
+      }
+
+      25%{
+        transform:scale(1.2);
+      }
+
+      40%{
+        transform:scale(.9);
+      }
+
+      60%{
+        transform:scale(1.25);
+      }
+
+      100%{
+        transform:scale(1);
+      }
+    }
+
+    h1{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:35px;
+      font-weight:800;
+
+      text-shadow:
+      0 0 10px rgba(255,255,255,.3),
+      0 0 25px rgba(255,105,180,.5);
+
+      animation:titleGlow 4s infinite alternate;
+    }
+
+    @keyframes titleGlow{
+      from{
+        text-shadow:
+        0 0 10px rgba(255,255,255,.2),
+        0 0 20px rgba(255,105,180,.3);
+      }
+
+      to{
+        text-shadow:
+        0 0 20px rgba(255,255,255,.6),
+        0 0 45px rgba(255,105,180,.8);
+      }
+    }
+    /* =========================
+   NADYA CINEMATIC EFFECT
+========================= */
+
+.girl-walk{
+
+  position:fixed;
+  bottom:20px;
+  left:-250px;
+
+  z-index:50;
+
+  animation:
+  girlWalk 22s linear infinite;
+}
+
+/* FOTO */
+
+.girl-walk img{
+
+  width:190px;
+
+  border-radius:28px;
+
+  border:3px solid rgba(255,255,255,.4);
+
+  box-shadow:
+  0 10px 35px rgba(255,105,180,.35),
+  0 0 40px rgba(255,255,255,.25),
+  0 0 80px rgba(255,20,147,.25);
+
+  animation:
+  girlFloat 3s infinite ease-in-out,
+  girlGlow 4s infinite alternate,
+  girlFade 2s ease;
+
+  object-fit:cover;
+
+  backdrop-filter:blur(5px);
+}
+
+/* MELAYANG */
+
+@keyframes girlFloat{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-14px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+/* GLOW */
+
+@keyframes girlGlow{
+
+  from{
+
+    box-shadow:
+    0 10px 35px rgba(255,105,180,.25),
+    0 0 30px rgba(255,255,255,.15);
+  }
+
+  to{
+
+    box-shadow:
+    0 10px 50px rgba(255,20,147,.55),
+    0 0 60px rgba(255,255,255,.35),
+    0 0 100px rgba(255,105,180,.45);
+  }
+}
+
+/* MUNCUL DARI KABUT */
+
+@keyframes girlFade{
+
+  from{
+    opacity:0;
+    filter:
+    blur(20px)
+    brightness(2);
+  }
+
+  to{
+    opacity:1;
+    filter:
+    blur(0)
+    brightness(1);
+  }
+}
+
+/* JALAN KIRI KE KANAN */
+
+@keyframes girlWalk{
+
+  0%{
+    left:-250px;
+    transform:
+    scaleX(1)
+    rotate(-2deg);
+  }
+
+  45%{
+    left:calc(100vw - 230px);
+    transform:
+    scaleX(1)
+    rotate(2deg);
+  }
+
+  50%{
+    left:calc(100vw - 230px);
+    transform:
+    scaleX(-1)
+    rotate(2deg);
+  }
+
+  95%{
+    left:-250px;
+    transform:
+    scaleX(-1)
+    rotate(-2deg);
+  }
+
+  100%{
+    left:-250px;
+    transform:
+    scaleX(1)
+    rotate(-2deg);
+  }
+}
+
+    /* =====================================================
+       TYPING BOX
+    ===================================================== */
+
+    .typing-box{
+      min-height:300px;
+      margin-bottom:40px;
+      font-size:20px;
+      line-height:2;
+      white-space:pre-line;
+      font-weight:300;
+    }
+
+    .cursor{
+      display:inline-block;
+      width:3px;
+      height:24px;
+      background:white;
+      animation:blink .8s infinite;
+      margin-left:4px;
+      vertical-align:middle;
+    }
+
+    @keyframes blink{
+      0%,50%{
+        opacity:1;
+      }
+
+      51%,100%{
+        opacity:0;
+      }
+    }
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-top:15px;
+    }
+
+    button{
+      border:none;
+      outline:none;
+      cursor:pointer;
+      font-family:'Poppins',sans-serif;
+      transition:.3s ease;
+    }
+
+    #yesBtn{
+      padding:18px 40px;
+      border-radius:18px;
+      color:white;
+      font-size:18px;
+      font-weight:700;
+
+      background:
+      linear-gradient(
+        135deg,
+        #ff8ab8,
+        #ff2670
+      );
+
+      box-shadow:
+      0 10px 30px rgba(255,20,147,.4);
+
+      animation:pulseButton 2s infinite;
+    }
+
+    @keyframes pulseButton{
+      0%{
+        transform:scale(1);
+      }
+
+      50%{
+        transform:scale(1.06);
+      }
+
+      100%{
+        transform:scale(1);
+      }
+    }
+
+    #yesBtn:hover{
+      transform:scale(1.12);
+      box-shadow:
+      0 0 40px rgba(255,20,147,.7);
+    }
+
+    #noBtn{
+      padding:18px 40px;
+      border-radius:18px;
+      background:white;
+      color:#ff2670;
+      font-size:18px;
+      font-weight:700;
+      position:relative;
+    }
+
+    /* =====================================================
+       MESSAGE
+    ===================================================== */
+
+    #message{
+      margin-top:45px;
+      font-size:26px;
+      line-height:2;
+      font-weight:600;
+      opacity:0;
+      transform:translateY(20px);
+      transition:1s ease;
+    }
+
+    #message.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* =====================================================
+       HEART RAIN
+    ===================================================== */
+
+    .flying-heart{
+      position:fixed;
+      bottom:-50px;
+      pointer-events:none;
+      z-index:999;
+      animation:flyHeart linear forwards;
+    }
+
+    @keyframes flyHeart{
+      0%{
+        transform:
+        translateY(0)
+        rotate(0deg)
+        scale(.7);
+
+        opacity:0;
+      }
+
+      15%{
+        opacity:1;
+      }
+
+      100%{
+        transform:
+        translateY(-130vh)
+        rotate(720deg)
+        scale(1.4);
+
+        opacity:0;
+      }
+    }
+
+    /* =====================================================
+       MUSIC DISC
+    ===================================================== */
+
+    .music-disc{
+      position:fixed;
+      top:20px;
+      right:20px;
+
+      width:65px;
+      height:65px;
+      border-radius:50%;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      font-size:28px;
+
+      background:rgba(255,255,255,.18);
+      backdrop-filter:blur(10px);
+
+      animation:rotateDisc 8s linear infinite;
+
+      z-index:999;
+    }
+
+    /* =====================================================
+       GIRL WALK ANIMATION
+    ===================================================== */
+
+    .girl-walk{
+      position:fixed;
+      bottom:20px;
+      left:-250px;
+      z-index:50;
+
+      animation:girlWalk 22s linear infinite;
+    }
+
+    .girl-walk img{
+      width:180px;
+      height:auto;
+
+      border-radius:24px;
+
+      box-shadow:
+      0 10px 35px rgba(255,105,180,.35),
+      0 0 40px rgba(255,255,255,.2);
+
+      border:3px solid rgba(255,255,255,.4);
+
+      animation:girlFloat 3s infinite ease-in-out;
+    }
+
+    @keyframes girlWalk{
+
+      0%{
+        left:-250px;
+        transform:scaleX(1);
+      }
+
+      45%{
+        left:calc(100vw - 200px);
+        transform:scaleX(1);
+      }
+
+      50%{
+        left:calc(100vw - 200px);
+        transform:scaleX(-1);
+      }
+
+      95%{
+        left:-250px;
+        transform:scaleX(-1);
+      }
+
+      100%{
+        left:-250px;
+        transform:scaleX(1);
+      }
+    }
+
+    @keyframes girlFloat{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-12px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes rotateDisc{
+      from{
+        transform:rotate(0deg);
+      }
+
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer{
+      margin-top:50px;
+      font-size:13px;
+      opacity:.8;
+      letter-spacing:2px;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media(max-width:768px){
+
+      h1{
+        font-size:48px;
+      }
+
+      .typing-box{
+        font-size:17px;
+        min-height:350px;
+      }
+
+      .heart{
+        font-size:90px;
+      }
+
+      .card{
+        padding:45px 25px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline class="video-bg">
+    <source src="https://cdn.coverr.co/videos/coverr-clouds-and-pink-sky-1564832061487?download=1080p" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+  <div class="aurora"></div>
+
+  <div class="music-disc">🎵</div>
+
+  <!-- GIRL ANIMATION -->
+  <div class="girl-walk">
+    <img src="nadya.jpeg" alt="girl">
+  </div>
+
+  <div id="particles"></div>
+
+  <div class="wrapper">
+
+    <div class="card">
+
+      <div class="mini-text">
+        Special Message For You
+      </div>
+
+      <div class="heart">
+        💖
+      </div>
+
+      <h1>
+        Mau jadi Pacarku?
+      </h1>
+
+      <div class="typing-box" id="typingBox"></div>
+
+      <div class="buttons">
+
+        <button id="yesBtn">
+          Mau ❤️
+        </button>
+
+        <button id="noBtn">
+          Gamau
+        </button>
+
+      </div>
+
+      <div id="message"></div>
+
+      <div class="footer">
+        dibuat dengan rasa yang serius ✨
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+
+/* =====================================================
+   PARTICLES GENERATOR
+===================================================== */
+
+const particleContainer =
+document.getElementById('particles');
+
+for(let i = 0; i < 120; i++){
+
+  const particle =
+  document.createElement('div');
+
+  particle.classList.add('particle');
+
+  const size =
+  Math.random() * 4 + 1;
+
+  particle.style.width =
+  size + 'px';
+
+  particle.style.height =
+  size + 'px';
+
+  particle.style.left =
+  Math.random() * 100 + 'vw';
+
+  particle.style.animationDuration =
+  (Math.random() * 10 + 8) + 's';
+
+  particle.style.animationDelay =
+  Math.random() * 8 + 's';
+
+  particle.style.opacity =
+  Math.random();
+
+  particleContainer.appendChild(particle);
+}
+
+/* =====================================================
+   TYPING EFFECT
+===================================================== */
+
+const romanticText =
+`Aku nggak tahu ini bakal jadi awal cerita seperti apa.
+
+Tapi sejak kenal kamu,
+ada banyak hal yang berubah di hidupku.
+
+Hari-hari yang biasanya biasa aja,
+jadi terasa lebih ringan.
+
+Aku jadi sering senyum sendiri.
+Aku jadi lebih semangat.
+Aku jadi selalu nunggu notif dari kamu.
+
+Aku suka cara kamu ngobrol.
+Aku suka cara kamu hadir.
+Aku suka semua hal kecil tentang kamu.
+
+Dan jujur...
+aku pengen kamu jadi bagian paling indah
+buat perjalanan hidupku.
+
+Jadi...
+
+mau nggak jadi pacarku? ❤️`;
+
+const typingBox =
+document.getElementById('typingBox');
+
+let charIndex = 0;
+
+function typingEffect(){
+
+  if(charIndex < romanticText.length){
+
+    typingBox.innerHTML +=
+    romanticText.charAt(charIndex);
+
+    charIndex++;
+
+    setTimeout(
+      typingEffect,
+      35
+    );
+  }
+
+  else{
+
+    const cursor =
+    document.createElement('span');
+
+    cursor.classList.add('cursor');
+
+    typingBox.appendChild(cursor);
+  }
+}
+
+setTimeout(
+  typingEffect,
+  1200
+);
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+const yesBtn =
+document.getElementById('yesBtn');
+
+const noBtn =
+document.getElementById('noBtn');
+
+const message =
+document.getElementById('message');
+
+/* =====================================================
+   YES BUTTON
+===================================================== */
+
+yesBtn.addEventListener('click',()=>{
+
+  message.innerHTML =
+  `YEAYYYY ❤️<br><br>
+  Sekarang kamu resmi jadi orang favoritku.<br>
+  Aku janji bakal jagain kamu,
+  nemenin kamu,
+  dan bikin banyak cerita manis bareng kamu ✨`;
+
+  message.classList.add('show');
+
+  document.querySelector('.card').style.transform =
+  'scale(1.03)';
+
+  document.querySelector('.card').style.boxShadow =
+  '0 0 120px rgba(255,105,180,.45)';
+
+  massiveHeartRain();
+
+  flashBackground();
+});
+
+/* =====================================================
+   RUN BUTTON
+===================================================== */
+
+noBtn.addEventListener('mouseover',()=>{
+
+  const maxX =
+  window.innerWidth -
+  noBtn.offsetWidth;
+
+  const maxY =
+  window.innerHeight -
+  noBtn.offsetHeight;
+
+  const randomX =
+  Math.floor(Math.random() * maxX);
+
+  const randomY =
+  Math.floor(Math.random() * maxY);
+
+  noBtn.style.position = 'fixed';
+
+  noBtn.style.left =
+  randomX + 'px';
+
+  noBtn.style.top =
+  randomY + 'px';
+});
+
+/* =====================================================
+   MASSIVE HEART RAIN
+===================================================== */
+
+function massiveHeartRain(){
+
+  const emojis =
+  ['💖','💘','💕','💞','❤️','💓'];
+
+  for(let i = 0; i < 250; i++){
+
+    const heart =
+    document.createElement('div');
+
+    heart.classList.add('flying-heart');
+
+    heart.innerHTML =
+    emojis[
+      Math.floor(
+        Math.random() *
+        emojis.length
+      )
+    ];
+
+    heart.style.left =
+    Math.random() * 100 + 'vw';
+
+    heart.style.fontSize =
+    (Math.random() * 35 + 18)
+    + 'px';
+
+    heart.style.animationDuration =
+    (Math.random() * 5 + 4)
+    + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+      heart.remove();
+    },9000);
+  }
+}
+
+/* =====================================================
+   FLASH EFFECT
+===================================================== */
+
+function flashBackground(){
+
+  const flash =
+  document.createElement('div');
+
+  flash.style.position = 'fixed';
+  flash.style.inset = '0';
+  flash.style.background = 'rgba(255,255,255,.18)';
+  flash.style.zIndex = '9999';
+  flash.style.pointerEvents = 'none';
+  flash.style.animation = 'flashAnim 1s ease forwards';
+
+  document.body.appendChild(flash);
+
+  const style =
+  document.createElement('style');
+
+  style.innerHTML = `
+
+  @keyframes flashAnim{
+
+    from{
+      opacity:1;
+    }
+
+    to{
+      opacity:0;
+    }
+  }
+
+  `;
+
+  document.head.appendChild(style);
+
+  setTimeout(()=>{
+    flash.remove();
+  },1000);
+}
+
+/* =====================================================
+   AUTO FLOATING HEARTS
+===================================================== */
+
+setInterval(()=>{
+
+  const autoHeart =
+  document.createElement('div');
+
+  autoHeart.classList.add('flying-heart');
+
+  autoHeart.innerHTML = '💕';
+
+  autoHeart.style.left =
+  Math.random() * 100 + 'vw';
+
+  autoHeart.style.fontSize =
+  (Math.random() * 20 + 14)
+  + 'px';
+
+  autoHeart.style.animationDuration =
+  (Math.random() * 5 + 6)
+  + 's';
+
+  document.body.appendChild(autoHeart);
+
+  setTimeout(()=>{
+    autoHeart.remove();
+  },8000);
+
+},800);
+
+
+
+/* =====================================================
+   SHOOTING STARS EFFECT
+===================================================== */
+
+function createShootingStar(){
+
+  const star =
+  document.createElement('div');
+
+  star.style.position = 'fixed';
+  star.style.top = Math.random() * 50 + 'vh';
+  star.style.left = '-200px';
+  star.style.width = '200px';
+  star.style.height = '2px';
+  star.style.background = 'linear-gradient(90deg, white, transparent)';
+  star.style.transform = 'rotate(-25deg)';
+  star.style.zIndex = '999';
+  star.style.opacity = '.8';
+  star.style.pointerEvents = 'none';
+  star.style.animation = 'shootStar 2s linear forwards';
+
+  document.body.appendChild(star);
+
+  setTimeout(()=>{
+    star.remove();
+  },2000);
+}
+
+const shootingStyle =
+document.createElement('style');
+
+shootingStyle.innerHTML = `
+
+@keyframes shootStar{
+
+  from{
+    transform:
+    translateX(0)
+    translateY(0)
+    rotate(-25deg);
+
+    opacity:0;
+  }
+
+  10%{
+    opacity:1;
+  }
+
+  to{
+    transform:
+    translateX(140vw)
+    translateY(60vh)
+    rotate(-25deg);
+
+    opacity:0;
+  }
+
+}
+
+`;
+
+document.head.appendChild(shootingStyle);
+
+setInterval(()=>{
+  createShootingStar();
+},4500);
+
+/* =====================================================
+   LOVE QUOTES ROTATOR
+===================================================== */
+
+const quotes = [
+  'Kamu adalah alasan kenapa aku percaya cinta sederhana itu nyata ❤️',
+  'Aku mungkin nggak sempurna, tapi perasaanku ke kamu selalu serius ✨',
+  'Kalau bahagia punya bentuk, mungkin bentuknya adalah kamu 💕',
+  'Aku cuma pengen jadi tempat pulang paling nyaman buat kamu 🫶',
+  'Semesta lucu juga ya, bisa-bisanya mempertemukan aku sama kamu 🌙'
+];
+
+const quoteElement =
+document.createElement('div');
+
+quoteElement.style.marginTop = '35px';
+quoteElement.style.fontSize = '15px';
+quoteElement.style.opacity = '.85';
+quoteElement.style.fontWeight = '300';
+quoteElement.style.lineHeight = '1.8';
+quoteElement.style.transition = '1s ease';
+
+quoteElement.innerHTML = quotes[0];
+
+document.querySelector('.footer').before(quoteElement);
+
+let quoteIndex = 0;
+
+setInterval(()=>{
+
+  quoteElement.style.opacity = '0';
+
+  setTimeout(()=>{
+
+    quoteIndex++;
+
+    if(quoteIndex >= quotes.length){
+      quoteIndex = 0;
+    }
+
+    quoteElement.innerHTML = quotes[quoteIndex];
+
+    quoteElement.style.opacity = '.85';
+
+  },600);
+
+},5000);
+
+/* =====================================================
+   MOUSE GLOW EFFECT
+===================================================== */
+
+const glow =
+document.createElement('div');
+
+glow.style.position = 'fixed';
+glow.style.width = '250px';
+glow.style.height = '250px';
+glow.style.borderRadius = '50%';
+glow.style.pointerEvents = 'none';
+glow.style.background = 'radial-gradient(circle, rgba(255,105,180,.25), transparent 70%)';
+glow.style.zIndex = '2';
+glow.style.transform = 'translate(-50%,-50%)';
+glow.style.transition = 'transform .05s linear';
+
+document.body.appendChild(glow);
+
+document.addEventListener('mousemove',(e)=>{
+
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+
+});
+
+/* =====================================================
+   CLICK SPARK EFFECT
+===================================================== */
+
+document.addEventListener('click',(e)=>{
+
+  for(let i = 0; i < 18; i++){
+
+    const spark =
+    document.createElement('div');
+
+    spark.style.position = 'fixed';
+    spark.style.left = e.clientX + 'px';
+    spark.style.top = e.clientY + 'px';
+    spark.style.width = '6px';
+    spark.style.height = '6px';
+    spark.style.borderRadius = '50%';
+    spark.style.background = 'white';
+    spark.style.pointerEvents = 'none';
+    spark.style.zIndex = '9999';
+
+    const angle = Math.random() * 360;
+    const distance = Math.random() * 120;
+
+    spark.animate([
+      {
+        transform:'translate(0,0) scale(1)',
+        opacity:1
+      },
+      {
+        transform:`translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`,
+        opacity:0
+      }
+    ],{
+      duration:800,
+      easing:'ease-out'
+    });
+
+    document.body.appendChild(spark);
+
+    setTimeout(()=>{
+      spark.remove();
+    },800);
+  }
+
+});
+
+/* =====================================================
+   AUDIO PLAYER
+===================================================== */
+
+const audio =
+document.createElement('audio');
+
+audio.src = 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8e1c5f4.mp3?filename=romantic-background-112997.mp3';
+audio.loop = true;
+audio.volume = 0.4;
+
+document.body.appendChild(audio);
+
+const musicDisc =
+document.querySelector('.music-disc');
+
+let isPlaying = false;
+
+musicDisc.addEventListener('click',()=>{
+
+  if(!isPlaying){
+
+    audio.play();
+
+    musicDisc.innerHTML = '🎶';
+
+    isPlaying = true;
+  }
+
+  else{
+
+    audio.pause();
+
+    musicDisc.innerHTML = '🎵';
+
+    isPlaying = false;
+  }
+
+});
+
+/* =====================================================
+   LOVE COUNTER
+===================================================== */
+
+const counter =
+document.createElement('div');
+
+counter.style.position = 'fixed';
+counter.style.bottom = '20px';
+counter.style.right = '20px';
+counter.style.padding = '12px 18px';
+counter.style.borderRadius = '16px';
+counter.style.background = 'rgba(255,255,255,.15)';
+counter.style.backdropFilter = 'blur(10px)';
+counter.style.fontSize = '14px';
+counter.style.zIndex = '999';
+counter.style.border = '1px solid rgba(255,255,255,.15)';
+
+let loveCount = 0;
+
+counter.innerHTML = 'Love Meter ❤️ 0%';
+
+document.body.appendChild(counter);
+
+setInterval(()=>{
+
+  if(loveCount < 100){
+
+    loveCount++;
+
+    counter.innerHTML =
+    `Love Meter ❤️ ${loveCount}%`;
+  }
+
+},120);
+
+</script>
+</body>
+</html>
